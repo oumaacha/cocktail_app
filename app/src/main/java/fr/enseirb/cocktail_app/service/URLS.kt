@@ -6,4 +6,6 @@ object URLS {
     var INGREDIENTS       = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
     var DRINKS_INGREDIENT = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={ingredient}"
     var DRINKS_CATEGORY   = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c={category}"
+    var DRINKS_DETAILS    = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="
+
 }
