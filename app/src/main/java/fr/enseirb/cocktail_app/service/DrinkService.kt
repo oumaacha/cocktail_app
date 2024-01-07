@@ -48,6 +48,18 @@ class DrinkService {
             throw Exception("Failed to fetch data. HTTP status code: ${response.code}")
         }
     }
+    suspend fun drinkByIngredient(ingredient:String): List<Drink> = withContext(Dispatchers.IO) {
+        val url = URLS.DRINKS_INGREDIENT+ingredient
+        val request = Request.Builder()
+            .url(url)
+            .build()
+        val response = client.newCall(request).execute()
+        if (response.isSuccessful) {
+            return@withContext parseJson2(response.body?.string() ?: "")
+        }else{
+            throw Exception("Failed to fetch data. HTTP status code: ${response.code}")
+        }
+    }
     private fun parseJson(json: String): List<Drink> {
         val drinks = mutableListOf<Drink>()
         val ingredientList = mutableListOf<Ingredient>()
