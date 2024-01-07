@@ -3,7 +3,7 @@ package fr.enseirb.cocktail_app.model
 data class Drink(
    val idDrink: String,
    val strDrink: String,
-   val strAlcoholic: String,
+   val strAlcoholic: String?,
    val strDrinkThumb: String,
 
    val category: Category?,
