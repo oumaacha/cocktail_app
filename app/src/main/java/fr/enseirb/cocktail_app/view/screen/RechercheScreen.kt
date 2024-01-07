@@ -38,7 +38,7 @@ import fr.enseirb.cocktail_app.service.DrinkService
 
 
 @Composable
-fun rechercheScreen() : String{
+fun rechercheScreen(drinkService: DrinkService) : String{
     var id = remember { mutableStateOf("") }
 
     Box(
@@ -50,7 +50,7 @@ fun rechercheScreen() : String{
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val data = searchBar()
+            val data = searchBar(drinkService)
             searchedList(data){
                 clicked -> id.value = clicked
             }
@@ -60,7 +60,7 @@ fun rechercheScreen() : String{
 }
 
 @Composable
-fun searchBar() : List<Drink>{
+fun searchBar(drinkService: DrinkService) : List<Drink>{
     val drinkService = DrinkService()
     var data = remember { mutableStateOf(emptyList<Drink>()) }
 
