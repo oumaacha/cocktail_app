@@ -12,7 +12,9 @@ import fr.enseirb.cocktail_app.model.Drink
 import fr.enseirb.cocktail_app.service.DrinkService
 import fr.enseirb.cocktail_app.view.screen.rechercheScreen
 import fr.enseirb.cocktail_app.View.screen.categoryScreen
+import fr.enseirb.cocktail_app.View.screen.ingredientScreen
 import fr.enseirb.cocktail_app.service.CategoryService
+import fr.enseirb.cocktail_app.service.IngredientService
 import fr.enseirb.cocktail_app.view.screen.listByIngredient
 
 
@@ -21,11 +23,14 @@ fun Navigation(navController: NavHostController) {
     var loading = remember { mutableStateOf(false) }
     val drinkService = DrinkService()
     val categoryService = CategoryService()
+    val ingredientService = IngredientService()
+    var ingredient = remember { mutableStateOf("") }
     var drink = remember { mutableStateOf("") }
     var category = remember { mutableStateOf("") }
     NavHost(navController = navController, startDestination = "recherche"){
         var datadrink: Drink? = null
         var drinksByCategory : List<Drink>? = null
+        var drinksByIngredient : List<Drink>? = null
         composable("recherche"){
             LaunchedEffect(Unit) {
                 drink.value = ""
@@ -65,7 +70,25 @@ fun Navigation(navController: NavHostController) {
             }
         }
         composable("ingredient"){
-            // ingredient screen
+            drink.value = ""
+            category.value = ""
+            LaunchedEffect(Unit) {
+                ingredient.value = ""
+            }
+            if(ingredient.value.equals("")){
+                ingredient.value = ingredientScreen(ingredientService)
+            } else{
+                LaunchedEffect(ingredient.value) {
+                    loading.value = true
+                    val result = drinkService.drinkByIngredient(ingredient.value)
+                    drinksByIngredient = result
+                    loading.value = false
+                }
+
+                if (drinksByIngredient != null && !loading.value) {
+                    listByIngredient(data = drinksByIngredient!!)
+                }
+            }
         }
     }
 }
