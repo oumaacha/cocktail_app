@@ -16,42 +16,51 @@ Cette application est réalisé par le binome :
 ## Screens et logo de l'application:
 - Screen des cocktails
   - Via Recherche
-![Screen des cocktails](ScreensApp/SearchScreen.jpeg)
+  
+  ![Screen des cocktails](ScreensApp/SearchScreen.jpeg)
 
 
 
   - Via Catégorie "CategoryHomede Liqueur"
-    ![Screen des cocktails](ScreensApp/CategoryHomemadeLiqueur.jpeg)
+
+  ![Screen des cocktails](ScreensApp/CategoryHomemadeLiqueur.jpeg)
 
     
   - Via Ingrédient "Amaretto"
-    ![Screen des cocktails](ScreensApp/IngredientAmaretto.jpeg)
+
+  ![Screen des cocktails](ScreensApp/IngredientAmaretto.jpeg)
 
 
 - Rechercher un cocktail
+
   ![Screen des cocktails](ScreensApp/Search.jpeg)
 
 
 
 - Screen des catégories
--   ![Screen des cocktails](ScreensApp/Categories.jpeg)
+
+  ![Screen des cocktails](ScreensApp/Categories.jpeg)
 
 
 
 - Screen des ingrédients
+
   ![Screen des cocktails](ScreensApp/Ingredients.jpeg)
 
 
 
 - Screen de détails du cocktail
+
   ![Screen des cocktails](ScreensApp/Details.jpeg)
 
 
 - Screen du Splash Screen
+
   ![Screen des cocktails](ScreensApp/SplashScreen.jpeg)
 
 
 - Screen du Loader
+
   ![Screen des cocktails](ScreensApp/Loader.jpeg)
 
 ## Fonctionnalités développées:
