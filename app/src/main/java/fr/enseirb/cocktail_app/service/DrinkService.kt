@@ -16,7 +16,6 @@ import org.json.JSONObject
 class DrinkService{
     private val client = OkHttpClient()
     private var favorites : ArrayList<Drink> = ArrayList()
-
     suspend fun fetchDrinks(drink: String): List<Drink> = withContext(Dispatchers.IO){
         val url = URLS.DRINKS+drink
         val request = Request.Builder()
@@ -152,24 +151,23 @@ class DrinkService{
         }
         return drinks
     }
-    public fun addToFavorite(drink:Drink){
-        val sharedPref = Application().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    public fun addToFavorite(drink:Drink, context: Context){
+        val sharedPref = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val KEY = drink.idDrink
         val json = Gson().toJson(drink)
-        loadFavorites()
+        loadFavorites(context)
         favorites.add(drink)
         with (sharedPref.edit()) {
-            putString("favorites", json)
+            putString("drinks", json)
             apply()
         }
 
     }
-    public fun loadFavorites(){
-        val sharedPref = Application().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    public fun loadFavorites(context: Context){
+        val sharedPref =context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val gson = Gson()
         var jsonData = sharedPref.getString("drinks",null)
-        val type = object : TypeToken<ArrayList<Drink>>() {}.type
-        favorites = gson.fromJson(jsonData,type)
+        println(jsonData)
         if (favorites == null){
             favorites = ArrayList<Drink>()
         }

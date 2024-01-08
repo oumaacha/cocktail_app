@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Cocktail_appTheme {
                 val navController = rememberNavController()
-                MainScreen(navController = navController)
+                MainScreen(navController = navController,this)
             }
         }
     }

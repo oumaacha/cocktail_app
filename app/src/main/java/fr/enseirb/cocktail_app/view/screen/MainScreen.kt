@@ -1,6 +1,7 @@
 package fr.enseirb.cocktail_app.view.screen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,7 +32,7 @@ import fr.enseirb.cocktail_app.view.navigation.Navigation
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-fun MainScreen(navController: NavHostController) {
+fun MainScreen(navController: NavHostController,context:Context) {
     val (currentScreen, setCurrentScreen) = remember { mutableStateOf("Home") } /////////
     Scaffold(
         topBar = {
@@ -49,7 +50,7 @@ fun MainScreen(navController: NavHostController) {
             )
         },
         content = {
-            Navigation(navController = navController)
+            Navigation(navController = navController,context)
         },
         bottomBar = {
             BottomNavBar(

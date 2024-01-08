@@ -1,5 +1,6 @@
 package fr.enseirb.cocktail_app.View.screen
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -32,7 +33,7 @@ import fr.enseirb.cocktail_app.model.Drink
 import fr.enseirb.cocktail_app.service.DrinkService
 
 @Composable
-fun drinkDetails(drink: Drink){
+fun drinkDetails(drink: Drink, context: Context){
     val drinkService = DrinkService()
     Box(
         modifier = Modifier
@@ -60,7 +61,7 @@ fun drinkDetails(drink: Drink){
                         /**
                          * This code trigger an exception of nullpointer in the context
                          */
-                        // drinkService.addToFavorite(drink)
+                         drinkService.addToFavorite(drink,context)
                     }) {
                         Icon(
                             imageVector = Icons.Default.FavoriteBorder,

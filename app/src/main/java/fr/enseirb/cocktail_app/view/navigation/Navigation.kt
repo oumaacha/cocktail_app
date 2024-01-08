@@ -1,5 +1,6 @@
 package fr.enseirb.cocktail_app.view.navigation
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -20,7 +21,7 @@ import fr.enseirb.cocktail_app.view.screen.listByIngredient
 
 
 @Composable
-fun Navigation(navController: NavHostController) {
+fun Navigation(navController: NavHostController,context: Context) {
     var loading = remember { mutableStateOf(false) }
     val drinkService = DrinkService()
     val categoryService = CategoryService()
@@ -46,7 +47,7 @@ fun Navigation(navController: NavHostController) {
                     loading.value = false
                 }
                 if (datadrink != null && !loading.value) {
-                    drinkDetails(drink = datadrink!!)
+                    drinkDetails(drink = datadrink!!,context)
                 }
             }
         }
