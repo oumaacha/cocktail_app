@@ -19,17 +19,21 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import fr.enseirb.cocktail_app.model.Drink
+import fr.enseirb.cocktail_app.service.DrinkService
 
 @Composable
 fun drinkDetails(drink: Drink){
+    val drinkService = DrinkService()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +56,12 @@ fun drinkDetails(drink: Drink){
                 ){
                     Text(text = drink.strDrink, color = Color.White, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                     Spacer(modifier = Modifier.weight(1f))
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {
+                        /**
+                         * This code trigger an exception of nullpointer in the context
+                         */
+                        // drinkService.addToFavorite(drink)
+                    }) {
                         Icon(
                             imageVector = Icons.Default.FavoriteBorder,
                             contentDescription = null,
