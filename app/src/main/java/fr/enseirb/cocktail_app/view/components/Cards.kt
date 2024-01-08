@@ -17,12 +17,14 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun OutlinedCardExample(item:String) {
+fun OutlinedCardExample(item:String,onCategoryClicked: (String) -> Unit) {
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
             .fillMaxWidth()
-            .clickable(onClick = {}),
+            .clickable(onClick = {
+                onCategoryClicked(item)
+            }),
         elevation = 4.dp,
         backgroundColor = Color.White,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
