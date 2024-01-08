@@ -43,7 +43,7 @@ fun MainScreen(navController: NavHostController,context:Context) {
                             .fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(text = currentScreen)
+                        //Text(text = currentScreen)
                     }
                 },
                 modifier = Modifier.height(60.dp),
@@ -74,7 +74,7 @@ fun MainScreen(navController: NavHostController,context:Context) {
                     BottomNavItem(
                         name = "Favorites",
                         route = "favorites",
-                        icon = painterResource(R.drawable.category_icon)
+                        icon = painterResource(R.drawable.heart_icon)
                     )
                 ),
                 navController = navController,

@@ -11,14 +11,14 @@ import androidx.navigation.NavHostController
 import fr.enseirb.cocktail_app.View.screen.drinkDetails
 import fr.enseirb.cocktail_app.model.Drink
 import fr.enseirb.cocktail_app.service.DrinkService
-import fr.enseirb.cocktail_app.view.screen.rechercheScreen
 import fr.enseirb.cocktail_app.View.screen.categoryScreen
-import fr.enseirb.cocktail_app.View.screen.ingredientScreen
+import fr.enseirb.cocktail_app.View.screen.ingredientScreeng
 import fr.enseirb.cocktail_app.View.screen.listByCategory
 import fr.enseirb.cocktail_app.service.CategoryService
 import fr.enseirb.cocktail_app.service.IngredientService
 import fr.enseirb.cocktail_app.view.screen.favoritesScreen
 import fr.enseirb.cocktail_app.view.screen.listByIngredient
+import fr.enseirb.cocktail_app.view.screen.rechercheScreen
 
 
 @Composable
