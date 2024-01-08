@@ -17,7 +17,7 @@ import fr.enseirb.cocktail_app.model.Ingredient
 import fr.enseirb.cocktail_app.service.IngredientService
 
 @Composable
-fun ingredientScreen(ingredientService: IngredientService) {
+fun ingredientScreen(ingredientService: IngredientService) : String {
     val ingredients = remember { mutableStateOf(emptyList<Ingredient>()) }
     var ingredient = remember { mutableStateOf("") }
     LaunchedEffect(true) {
@@ -40,4 +40,5 @@ fun ingredientScreen(ingredientService: IngredientService) {
             )
         }
     }
+    return ingredient.value
 }
