@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import fr.enseirb.cocktail_app.service.CategoryService
 
 @Composable
-fun CategoryScreen(categoryService: CategoryService) {
+fun categoryScreen(categoryService: CategoryService) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
