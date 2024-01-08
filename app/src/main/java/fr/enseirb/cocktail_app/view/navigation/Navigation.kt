@@ -7,18 +7,25 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
+import fr.enseirb.cocktail_app.View.screen.drinkDetails
 import fr.enseirb.cocktail_app.model.Drink
 import fr.enseirb.cocktail_app.service.DrinkService
 import fr.enseirb.cocktail_app.view.screen.rechercheScreen
+import fr.enseirb.cocktail_app.View.screen.categoryScreen
+import fr.enseirb.cocktail_app.service.CategoryService
+
 
 
 @Composable
 fun Navigation(navController: NavHostController) {
     var loading = remember { mutableStateOf(false) }
     val drinkService = DrinkService()
+    val categoryService = CategoryService()
     var drink = remember { mutableStateOf("") }
+    var category = remember { mutableStateOf("") }
     NavHost(navController = navController, startDestination = "recherche"){
         var datadrink: Drink? = null
+        var drinksByCategory : List<Drink>? = null
         composable("recherche"){
             LaunchedEffect(Unit) {
                 drink.value = ""
@@ -38,7 +45,24 @@ fun Navigation(navController: NavHostController) {
             }
         }
         composable("category"){
-            // category screen
+            drink.value = ""
+            LaunchedEffect(Unit) {
+                category.value = ""
+            }
+            if(category.value.equals("")){
+                category.value = categoryScreen(categoryService)
+            } else{
+                LaunchedEffect(category.value) {
+                    loading.value = true
+                    val result = drinkService.drinkByCategory(category.value)
+                    drinksByCategory = result
+                    loading.value = false
+                }
+
+                if (drinksByCategory != null && !loading.value) {
+                    listByIngredient(data = drinksByCategory!!)
+                }
+            }
         }
         composable("ingredient"){
             // ingredient screen
