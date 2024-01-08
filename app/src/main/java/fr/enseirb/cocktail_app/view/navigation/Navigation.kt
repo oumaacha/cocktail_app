@@ -13,7 +13,7 @@ import fr.enseirb.cocktail_app.service.DrinkService
 import fr.enseirb.cocktail_app.view.screen.rechercheScreen
 import fr.enseirb.cocktail_app.View.screen.categoryScreen
 import fr.enseirb.cocktail_app.service.CategoryService
-
+import fr.enseirb.cocktail_app.view.screen.listByIngredient
 
 
 @Composable
