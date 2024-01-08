@@ -19,6 +19,7 @@ import fr.enseirb.cocktail_app.service.IngredientService
 @Composable
 fun ingredientScreen(ingredientService: IngredientService) {
     val ingredients = remember { mutableStateOf(emptyList<Ingredient>()) }
+    var ingredient = remember { mutableStateOf("") }
     LaunchedEffect(true) {
         val fetchedCategories = ingredientService.fetchIngredients()
         ingredients.value = fetchedCategories
@@ -34,7 +35,7 @@ fun ingredientScreen(ingredientService: IngredientService) {
             items(
                 items = ingredients.value,
                 itemContent = {
-                    OutlinedCardExample(it.name)
+                    OutlinedCardExample(it.name,{item -> ingredient.value = item})
                 }
             )
         }
