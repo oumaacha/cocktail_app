@@ -35,6 +35,9 @@ fun categoryScreen(categoryService: CategoryService) : String{
             items(
                 items = categories.value,
                 itemContent = {
+                    OutlinedCardExample(it.name) { item ->
+                        category.value = item
+                    }
                 }
             )
         }

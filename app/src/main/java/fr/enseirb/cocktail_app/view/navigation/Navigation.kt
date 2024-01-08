@@ -14,6 +14,7 @@ import fr.enseirb.cocktail_app.service.DrinkService
 import fr.enseirb.cocktail_app.view.screen.rechercheScreen
 import fr.enseirb.cocktail_app.View.screen.categoryScreen
 import fr.enseirb.cocktail_app.View.screen.ingredientScreen
+import fr.enseirb.cocktail_app.View.screen.listByCategory
 import fr.enseirb.cocktail_app.service.CategoryService
 import fr.enseirb.cocktail_app.service.IngredientService
 import fr.enseirb.cocktail_app.view.screen.favoritesScreen
@@ -53,6 +54,7 @@ fun Navigation(navController: NavHostController,context: Context) {
         }
         composable("category"){
             drink.value = ""
+            ingredient.value = ""
             LaunchedEffect(Unit) {
                 category.value = ""
             }
@@ -67,7 +69,7 @@ fun Navigation(navController: NavHostController,context: Context) {
                 }
 
                 if (drinksByCategory != null && !loading.value) {
-                    listByIngredient(data = drinksByCategory!!)
+                    listByCategory(data = drinksByCategory!!)
                 }
             }
         }
@@ -96,7 +98,8 @@ fun Navigation(navController: NavHostController,context: Context) {
             drink.value = ""
             category.value = ""
             ingredient.value = ""
-            favoritesScreen()
+            val favorites = drinkService.getFavorites()
+            favoritesScreen(favorites)
         }
     }
 }
