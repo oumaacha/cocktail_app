@@ -163,16 +163,19 @@ class DrinkService{
         }
 
     }
-    public fun loadFavorites(context: Context){
+    public fun loadFavorites(context: Context): List<Drink>{
         val sharedPref =context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val gson = Gson()
         var jsonData = sharedPref.getString("drinks",null)
-        println(jsonData)
+        val type = object : TypeToken<Drink>() {}.type
+        val singleDrink = gson.fromJson<Drink>(jsonData, type)
+        favorites.add(singleDrink)
         if (favorites == null){
             favorites = ArrayList<Drink>()
         }
+        return favorites
     }
-    public fun  getFavorites() : ArrayList<Drink>{
+    public fun  getFavorites() : List<Drink>{
         return favorites;
     }
 
