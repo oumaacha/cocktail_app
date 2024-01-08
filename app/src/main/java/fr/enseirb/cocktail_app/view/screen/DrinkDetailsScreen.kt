@@ -9,9 +9,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,7 +45,22 @@ fun drinkDetails(drink: Drink){
                     .background(Color.LightGray)
                     .padding(20.dp)
             ){
-                Text(text = drink.strDrink, color = Color.White, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Text(text = drink.strDrink, color = Color.White, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                    Spacer(modifier = Modifier.weight(1f))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.Default.FavoriteBorder,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(24.dp)
+                        )
+                    }
+                }
             }
             AsyncImage(model = drink.strDrinkThumb, contentDescription = "Image", modifier = Modifier.fillMaxWidth())
             Box(

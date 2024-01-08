@@ -15,6 +15,7 @@ import fr.enseirb.cocktail_app.View.screen.categoryScreen
 import fr.enseirb.cocktail_app.View.screen.ingredientScreen
 import fr.enseirb.cocktail_app.service.CategoryService
 import fr.enseirb.cocktail_app.service.IngredientService
+import fr.enseirb.cocktail_app.view.screen.favoritesScreen
 import fr.enseirb.cocktail_app.view.screen.listByIngredient
 
 

@@ -43,17 +43,6 @@ fun MainScreen(navController: NavHostController) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(text = currentScreen)
-
-                        // Add Spacer to occupy available space
-                        Spacer(modifier = Modifier.weight(1f))
-
-                        IconButton(onClick = { /*TODO*/ }) {
-                            Icon(
-                                imageVector = Icons.Default.FavoriteBorder,
-                                contentDescription = null,
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
                     }
                 },
                 modifier = Modifier.height(60.dp),
