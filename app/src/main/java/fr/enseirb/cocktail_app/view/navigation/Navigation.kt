@@ -90,5 +90,11 @@ fun Navigation(navController: NavHostController) {
                 }
             }
         }
+        composable("favorites"){
+            drink.value = ""
+            category.value = ""
+            ingredient.value = ""
+            favoritesScreen()
+        }
     }
 }
