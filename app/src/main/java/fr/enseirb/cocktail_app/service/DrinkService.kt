@@ -1,5 +1,9 @@
 package fr.enseirb.cocktail_app.service
 
+import android.app.Application
+import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import fr.enseirb.cocktail_app.model.Category
 import fr.enseirb.cocktail_app.model.Drink
 import fr.enseirb.cocktail_app.model.Ingredient
@@ -9,8 +13,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
-class DrinkService {
+class DrinkService{
     private val client = OkHttpClient()
+    private var favorites : ArrayList<Drink> = ArrayList()
 
     suspend fun fetchDrinks(drink: String): List<Drink> = withContext(Dispatchers.IO){
         val url = URLS.DRINKS+drink
@@ -147,4 +152,30 @@ class DrinkService {
         }
         return drinks
     }
+    public fun addToFavorite(drink:Drink){
+        val sharedPref = Application().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val KEY = drink.idDrink
+        val json = Gson().toJson(drink)
+        loadFavorites()
+        favorites.add(drink)
+        with (sharedPref.edit()) {
+            putString("favorites", json)
+            apply()
+        }
+
+    }
+    public fun loadFavorites(){
+        val sharedPref = Application().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val gson = Gson()
+        var jsonData = sharedPref.getString("drinks",null)
+        val type = object : TypeToken<ArrayList<Drink>>() {}.type
+        favorites = gson.fromJson(jsonData,type)
+        if (favorites == null){
+            favorites = ArrayList<Drink>()
+        }
+    }
+    public fun  getFavorites() : ArrayList<Drink>{
+        return favorites;
+    }
+
 }

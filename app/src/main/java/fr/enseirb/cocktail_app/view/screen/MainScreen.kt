@@ -2,13 +2,13 @@ package fr.enseirb.cocktail_app.view.screen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import fr.enseirb.cocktail_app.MainActivity
 import fr.enseirb.cocktail_app.R
 import fr.enseirb.cocktail_app.view.navigation.BottomNavItem
 import fr.enseirb.cocktail_app.view.navigation.BottomNavBar
@@ -42,17 +43,6 @@ fun MainScreen(navController: NavHostController) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(text = currentScreen)
-
-                        // Add Spacer to occupy available space
-                        Spacer(modifier = Modifier.weight(1f))
-
-                        IconButton(onClick = { /*TODO*/ }) {
-                            Icon(
-                                imageVector = Icons.Default.FavoriteBorder,
-                                contentDescription = null,
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
                     }
                 },
                 modifier = Modifier.height(60.dp),
@@ -79,6 +69,11 @@ fun MainScreen(navController: NavHostController) {
                         name = "Ingredient",
                         route = "ingredient",
                         icon = painterResource(R.drawable.ingredient_icon)
+                    ),
+                    BottomNavItem(
+                        name = "Favorites",
+                        route = "favorites",
+                        icon = painterResource(R.drawable.category_icon)
                     )
                 ),
                 navController = navController,
